@@ -1,16 +1,16 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    objectId: 10245,
+    objectId: 10271,
     apiData: {}
-}
+};
 
 export const dataSlice = createSlice({
     name: 'data',
     initialState,
     reducers: {
         setData: (state, action) => {
-            return {...state, apiData : action.payload}
+            return { ...state, apiData: action.payload }
         },
         clearData: () => {
             return initialState
@@ -25,10 +25,12 @@ export const dataSlice = createSlice({
             return { ...state, objectId: state.objectId - 1 }
         }
     }
-})
+});
 
-export const { setData, clearData, incrementId, decrementId, inputId } = dataSlice.actions
+export const { setData, clearData, incrementId, decrementId, inputId } = dataSlice.actions;
 
+
+// THUNK FUNCTION //
 export const fetchData = () => {
     const fetchDataThunk = async (dispatch, getState) => {
         let state = getState()
@@ -37,6 +39,6 @@ export const fetchData = () => {
         dispatch(setData(rData))
     }
     return fetchDataThunk
-}
+};
 
-export default dataSlice.reducer
+export default dataSlice.reducer;
